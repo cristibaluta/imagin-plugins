@@ -1,0 +1,64 @@
+
+# Compile the slideshow plugin for Flash
+# -swf ../../Publish/files.imagin/plugins/ViewerSlideshow.swf
+# -swf-header 1000:600:40
+# -swf-version 9
+# -swf-lib Resources/resources.swf
+# -main v4.viewer.ViewerSlideshow
+# -cp Common
+# -cp Extern
+# -cp Plugins
+#--no-traces
+
+# Compile the slideshow plugin for JS
+-js ../../Publish/files.imagin/plugins/ViewerSlideshow.js
+-main v4.viewer.ViewerSlideshow
+-cp Interface
+-cp Extern
+-cp Plugins
+#--no-traces
+
+
+
+# Compile the simple viewer plugin for JS
+--next
+-js ../../Publish/files.imagin/plugins/ViewerSimple.js
+-main v4.viewer.ViewerSimple
+-cp Interface
+-cp Extern
+-cp Plugins
+#--no-traces
+
+
+# Compile the navigation plugin for JS
+--next
+-js ../../Publish/files.imagin/plugins/Navigation.js
+-main v4.navigation.NavigationController
+-cp Interface
+-cp Extern
+-cp Plugins
+#--no-traces
+
+
+
+# Compile the timeline plugin for JS
+--next
+-js ../../Publish/files.imagin/plugins/Timeline.js
+-main v4.timeline.TimelineController
+-cp Interface
+-cp Extern
+-cp Plugins
+# ../../../sdk.ralcr.hxml - buggy, the app buttons breaks
+#-cp ../sdk.ralcr/DrawKit
+#--no-traces
+
+
+
+# Compile the captions plugin for JS
+--next
+-js ../../Publish/files.imagin/plugins/Captions.js
+-main v4.captions.CaptionsController
+-cp Interface
+-cp Extern
+-cp Plugins
+#--no-traces
