@@ -197,7 +197,8 @@ class CommentsViewController extends RCView {
 	
 	
 	// Don't do anything, this is a plugin
-	public static function main(){ RCLog.redirectTraces(); }
-	
+	public static function main () {
+		Type.resolveClass("");// Hack to include the class definitions in the generated code
+	}
 	
 }

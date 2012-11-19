@@ -6,8 +6,8 @@
 //
 class Comments {
 	
-	var read_req :HTTPRequest;
-	var write_req :HTTPRequest;
+	var read_req :RCHttp;
+	var write_req :RCHttp;
 	var xml :Xml;
 	var lines :Array<Comment>;
 	var URL :String;
@@ -30,7 +30,7 @@ class Comments {
 	 *  Request the existing comments from server
 	 */
 	public function read () :Void {
-		read_req = new HTTPRequest( null );
+		read_req = new RCHttp( null );
 		read_req.onComplete = parseComments;
 		read_req.onError = createNewXml;
 		read_req.readFile ( URL + Config.RND );
@@ -79,7 +79,7 @@ class Comments {
 			url2 = Config.PHOTOS_PATH + url2.split( Config.PHOTOS_PATH ).pop();
 		
 		// Send the data to server
-		write_req = new HTTPRequest ( Config.API_DIR );
+		write_req = new RCHttp ( Config.API_DIR );
 		write_req.onComplete = onWriteCompleteHandler;
 		write_req.onError = onWriteErrorHandler;
 		write_req.call ("filesystem/writeComment.php", {path : url2, raw_data : xml.toString()});

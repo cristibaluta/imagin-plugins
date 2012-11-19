@@ -99,6 +99,8 @@ class TimelineController extends RCView, implements TimelineInterface {
 	
 	
 	// Don't do anything, plugins are instantiated from the main app
-	public static function main(){ RCLog.redirectTraces(); }
+	public static function main () {
+		Type.resolveClass("");// Hack to include the class definitions in the generated code
+	}
 	
 }

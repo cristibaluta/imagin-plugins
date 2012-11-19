@@ -60,7 +60,7 @@ class ViewerBase extends RCView {
 	
 	
 	
-	public function toString () :String {
+	public function toString2 () :String {
 		var c = "ViewerBase ";//super.toString();
 		return [c+" -> limits: "+limits,
 				"transition: "+transition,

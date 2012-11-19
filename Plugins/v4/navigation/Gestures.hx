@@ -24,9 +24,9 @@ class Gestures extends NavigationBase, implements NavigationInterface {
 	
 	function config () {
 		
-		colorBackground = Preferences.hexColorForKey ("color_background_menu");
+/*		colorBackground = Preferences.hexColorForKey ("color_background_menu");
 		colorArrow = Preferences.hexColorForKey ("color_arrow");
-		colorArrowOver = Preferences.hexColorForKey ("color_highlighted");
+		colorArrowOver = Preferences.hexColorForKey ("color_highlighted");*/
 	}
 	
 	override public function init () {

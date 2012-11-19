@@ -25,7 +25,7 @@ class ViewerSimple extends ViewerBase, implements ViewerInterface {
 	**/
 	public function initWithFile (?file:String) :Void {
 		//trace("init ( "+file+" )");
-		timerComplete.dispatch();
+		//timerComplete.dispatch();
 	}
 	
 	
@@ -105,5 +105,7 @@ class ViewerSimple extends ViewerBase, implements ViewerInterface {
 	
 	
 	// Don't do anything, plugins are instantiated from the master software when needed.
-	public static function main(){ RCLog.redirectTraces(); }
+	public static function main(){
+		Type.resolveClass("");// Hack to include the class definitions in the generated code
+	}
 }

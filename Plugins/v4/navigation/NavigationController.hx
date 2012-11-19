@@ -36,7 +36,7 @@ class NavigationController extends NavigationBase, implements NavigationInterfac
 	
 	override public function init () {
 		
-		var navigationTypes = StringTools.replace ( Preferences.stringForKey("navigation").toLowerCase(), " ", "").split(",");
+		var navigationTypes = [];//StringTools.replace ( Preferences.stringForKey("navigation").toLowerCase(), " ", "").split(",");
 		
 		for (nav in navigationTypes) {
 			
@@ -100,6 +100,8 @@ class NavigationController extends NavigationBase, implements NavigationInterfac
 	
 	
 	// Don't do anything, this is a plugin
-	public static function main(){ RCLog.redirectTraces(); }
+	public static function main () {
+		Type.resolveClass("");// Hack to include the class definitions in the generated code
+	}
 	
 }

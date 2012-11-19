@@ -80,6 +80,8 @@ class CaptionsController extends RCView, implements CaptionsInterface {
 	
 	
 	// Don't do anything, this is a plugin
-	public static function main(){ RCLog.redirectTraces(); }
+	public static function main () {
+		Type.resolveClass("");// Hack to include the class definitions in the generated code
+	}
 	
 }

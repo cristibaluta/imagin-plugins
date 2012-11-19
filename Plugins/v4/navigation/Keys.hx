@@ -5,7 +5,7 @@ import EnumDirection;
 
 class Keys extends NavigationBase {
 	
-	var kb :RCKeys;
+	var kb :RCKeyboardController;
 	
 	public function new () {
 		super ( null );
@@ -13,7 +13,7 @@ class Keys extends NavigationBase {
 	
 	override public function init () {
 		
-		kb = new RCKeys();
+		kb = new RCKeyboardController();
 		kb.onLeft = goLeft;
 		kb.onRight = goRight;
 		kb.onUp = goLeft;
