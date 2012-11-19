@@ -142,10 +142,16 @@ class Arrows extends NavigationBase, implements NavigationInterface {
 	
 	
 	override public function resize  (limits:RCRect) {
-		
+		trace("resize "+limits);
 		// x alignment
-		butLeft.x = Math.round (limits.origin.x - butLeft.width - 20);
-		butRight.x = Math.round (limits.origin.x + limits.size.width + 20);
+		if (limits.origin.x < 40) {
+			butLeft.x = 0;
+			butRight.x = Math.round (limits.origin.x * 2 + limits.size.width - 40);
+		}
+		else {
+			butLeft.x = Math.round (limits.origin.x - butLeft.width - 20);
+			butRight.x = Math.round (limits.origin.x + limits.size.width + 20);
+		}
 		
 		// arrange buttons in the middle on Y axis
 		butLeft.y = Math.round (limits.origin.y + (limits.size.height - butLeft.height) / 2);

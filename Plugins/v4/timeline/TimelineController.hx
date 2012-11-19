@@ -77,7 +77,6 @@ class TimelineController extends RCView, implements TimelineInterface {
 	}
 	
 	public function updateSliderPosition (currentItem:Int, currentTime:Int, slideshow_is_running:Bool) :Void {
-		trace("updateSliderPosition "+currentItem);
 		if (timeline != null)
 			timeline.updateSliderPosition (currentItem, currentTime, slideshow_is_running);
 	}

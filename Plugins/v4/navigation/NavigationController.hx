@@ -28,7 +28,7 @@ class NavigationController extends NavigationBase, implements NavigationInterfac
 	
 	
 	public function new (mouseArea:RCRectangle) {
-		
+		trace("new NavigationController "+mouseArea);
 		super ( mouseArea );
 		
 		navigations = new Array<NavigationBase>();
@@ -36,7 +36,7 @@ class NavigationController extends NavigationBase, implements NavigationInterfac
 	
 	override public function init () {
 		
-		var navigationTypes = [];//StringTools.replace ( Preferences.stringForKey("navigation").toLowerCase(), " ", "").split(",");
+		var navigationTypes = StringTools.replace ( Preferences.stringForKey("navigation").toLowerCase(), " ", "").split(",");
 		
 		for (nav in navigationTypes) {
 			

@@ -132,8 +132,9 @@ class Expandable extends RCView, implements TimelineInterface {
 	/**
 	 * Update the progress bar of each thumb corespondingly with the percent loaded of the picture
 	 */
-	public function updateLoaderProgress (nr:Int, percent:Int) :Void {
-		thumbs[nr].updateLoaderProgress ( percent );
+	public function updateLoaderProgress (i:Int, percent:Int) :Void {
+		
+		thumbs[i].updateLoaderProgress ( percent );
 	}
 	
 	// Update the slider position in timeline

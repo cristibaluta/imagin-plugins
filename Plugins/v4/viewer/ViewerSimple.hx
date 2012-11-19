@@ -25,7 +25,7 @@ class ViewerSimple extends ViewerBase, implements ViewerInterface {
 	**/
 	public function initWithFile (?file:String) :Void {
 		//trace("init ( "+file+" )");
-		//timerComplete.dispatch();
+		timerComplete.dispatch();
 	}
 	
 	
