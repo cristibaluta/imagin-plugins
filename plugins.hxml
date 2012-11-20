@@ -71,3 +71,28 @@
 ../../../sdk.ralcr.hxml
 --macro excludeFile('Exclude.txt')
 #--no-traces
+
+
+
+# Compile the admin plugin
+--next
+-js ../../Publish/files.imagin/plugins/Admin.js
+-main v4.admin.AdminController
+-cp Interface
+-cp Extern
+-cp Plugins
+../../../sdk.ralcr.hxml
+--macro excludeFile('Exclude.txt')
+#--no-traces
+
+
+
+--next
+-js ../../Publish/files.imagin/plugins/Video.js
+-main v4.admin.VideoController
+-cp Interface
+-cp Extern
+-cp Plugins
+../../../sdk.ralcr.hxml
+--macro excludeFile('Exclude.txt')
+#--no-traces
