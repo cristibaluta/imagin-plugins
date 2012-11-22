@@ -89,7 +89,7 @@
 
 --next
 -js ../../Publish/files.imagin/plugins/Video.js
--main v4.admin.VideoController
+-main v4.video.VideoController
 -cp Interface
 -cp Extern
 -cp Plugins

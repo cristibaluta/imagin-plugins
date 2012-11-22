@@ -324,7 +324,7 @@ class ViewerSlideshow extends ViewerBase, implements ViewerInterface {
 					var photo = photosManager.getPhoto( i );
 					
 					if (photo != null)
-					if (photo.isLoaded && i == photosManager.getCurrentPhotoNr() && background != null) {
+					if (photo.isLoaded && i == photosManager.getCurrentPhotoIndex() && background != null) {
 						// Align the background to fit the current photo
 						background.x = photo.view.x;
 						background.y = photo.view.y;
