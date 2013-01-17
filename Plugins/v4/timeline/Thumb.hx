@@ -122,7 +122,7 @@ class Thumb extends RCControl {
 	function stopLoader () {
 		timer.stop();
 		loader.visible = true;
-		indeterminateLoader.removeFromSuperView();
+		indeterminateLoader.removeFromSuperview();
 	}
 	
 	

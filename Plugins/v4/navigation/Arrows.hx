@@ -1,5 +1,5 @@
 package v4.navigation;
-
+import RCDevice;
 
 class Arrows extends NavigationBase, implements NavigationInterface {
 	
@@ -39,7 +39,8 @@ class Arrows extends NavigationBase, implements NavigationInterface {
 	 */
 	function addLeftButton () {
 		
-		var s = new SkinButtonWithImage ( Config.THEME_PATH + "ArrowLeft.png", Config.THEME_PATH + "ArrowLeftHighlighted.png" );
+		var suffix = getSuffix();
+		var s = new SkinButtonWithImage ( Config.THEME_PATH + "ArrowLeft"+suffix+".png", Config.THEME_PATH + "ArrowLeftHighlighted"+suffix+".png" );
 		butLeft = new RCButton (0, 0, s);
 		butLeft.onRelease = goLeft;
 		this.addChild ( butLeft );
@@ -48,11 +49,24 @@ class Arrows extends NavigationBase, implements NavigationInterface {
 	
 	function addRightButton () {
 		
-		var s = new SkinButtonWithImage ( Config.THEME_PATH + "ArrowRight.png", Config.THEME_PATH + "ArrowRightHighlighted.png" );
+		var suffix = getSuffix();
+		var s = new SkinButtonWithImage ( Config.THEME_PATH + "ArrowRight"+suffix+".png", Config.THEME_PATH + "ArrowRightHighlighted"+suffix+".png" );
 		butRight = new RCButton (0, 0, s);
 		butRight.onRelease = goRight;
 		this.addChild ( butRight );
 		butRight.init();
+	}
+	function getSuffix():String{
+		return switch (RCDevice.currentDevice().type) {
+			case IPhone : "-touch";
+			case IPad : "-touch";
+			case IPod : "-touch";
+			case Android : "-touch";
+			case WebOS : "-touch";
+			case Mac : "";
+			case Playstation : "";
+			case Other : "";
+		}
 	}
 	function addExitButton (?shadowed:Bool=true) {
 /*		butExit = constructButtonNavigation ( new ArrowView ("skin_arrow_exit", colorArrow, shadowed) );
@@ -142,6 +156,9 @@ class Arrows extends NavigationBase, implements NavigationInterface {
 	
 	
 	override public function resize  (limits:RCRect) {
+		haxe.Timer.delay ( function(){ resize_(limits); }, 100);
+	}
+	function resize_ (limits:RCRect) {
 		trace("resize "+limits);
 		// x alignment
 		if (limits.origin.x < 40) {

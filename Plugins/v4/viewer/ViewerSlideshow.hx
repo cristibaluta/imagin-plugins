@@ -169,7 +169,7 @@ class ViewerSlideshow extends ViewerBase, implements ViewerInterface {
 		currentPhoto.isTweening = false;
 		
 		// Current photo faded out, now remove it from display list
-		currentPhoto.view.removeFromSuperView();
+		currentPhoto.view.removeFromSuperview();
 		
 		// Continue with the resizing of the background
 		resizeBackground (currentPhoto, nextPhoto, t, .6);

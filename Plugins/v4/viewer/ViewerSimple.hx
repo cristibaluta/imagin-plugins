@@ -64,7 +64,7 @@ class ViewerSimple extends ViewerBase, implements ViewerInterface {
 	{
 		
 		if (currentPhoto != null)
-			currentPhoto.view.removeFromSuperView();
+			currentPhoto.view.removeFromSuperview();
 		
 		// Add nextPhoto to the display list, resize and reposition it
 		nextPhoto.view.alpha = 1;

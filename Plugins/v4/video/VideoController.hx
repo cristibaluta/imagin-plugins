@@ -170,9 +170,9 @@ class VideoController extends RCView {
 			media.destroy();
 			slider.destroy();
 			volume.destroy();
-			media.removeFromSuperView();
-			slider.removeFromSuperView();
-			volume.removeFromSuperView();
+			media.removeFromSuperview();
+			slider.removeFromSuperview();
+			volume.removeFromSuperview();
 			media = null;
 			slider = null;
 			volume = null;
