@@ -7,7 +7,7 @@
 package v4.timeline;
 
 
-class Horizontal extends Expandable, implements TimelineInterface {
+class Horizontal extends Expandable implements TimelineInterface {
 	
 	
 	override public function init () :Void {

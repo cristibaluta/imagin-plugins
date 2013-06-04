@@ -7,7 +7,7 @@
 package v4.timeline;
 
 
-class Digits extends MenuBackground, implements TimelineInterface {
+class Digits extends MenuBackground implements TimelineInterface {
 	
 	public var view :RCView;
 	
@@ -65,8 +65,8 @@ class Digits extends MenuBackground, implements TimelineInterface {
 			var digit = buttonForLabel ( RCStringTools.add0 (i + 1) );
 				digit.x = (i == 0) ? 0 : Math.round (digits[i-1].x + digits[i-1].width + 8);
 				digit.alpha = 0.3;
-				digit.onClick = callback (clickHandler, i);
-				digit.onOver = callback (showThumbnail, i);
+				digit.onClick = clickHandler.bind (i);
+				digit.onOver = showThumbnail.bind (i);
 				digit.onOut = destroyThumbnail;
 				
 			digits.push ( digit );

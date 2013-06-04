@@ -5,10 +5,10 @@ interface IMMediaViewerInterface {
 	public var errorMessage :String;
 	public var isLoaded :Bool;
 	public var isTweening :Bool;
-	public var isVideo (getIsVideo, null) :Bool;
+	public var isVideo (get, null) :Bool;
 	//public var scale (null, setScale) :Float;
 	
-	public function getIsVideo () :Bool;
+	public function get_isVideo () :Bool;
 	public function startVideo () :Void;
 	public function stopVideo () :Void;
 	public function show () :Void;

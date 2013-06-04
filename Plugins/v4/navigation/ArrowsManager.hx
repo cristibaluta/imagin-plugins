@@ -17,7 +17,7 @@ class ArrowsManager {
 	inline static public var NEXT = "skin_arrow_next";
 	inline static public var PLAY = "skin_arrow_start";
 	inline static public var PAUSE = "skin_arrow_pause";
-	inline static var KEYS = [EXIT, PREV, NEXT, PLAY, PAUSE];
+	inline static function KEYS () :Array<String> { return [EXIT, PREV, NEXT, PLAY, PAUSE]; }
 	static var arrows :Hash<ArrowView>;
 	
 	

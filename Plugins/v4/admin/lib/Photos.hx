@@ -48,7 +48,7 @@ class Photos extends RCFiles {
 		
 		for (i in 0...allFiles.length) {
 			var th = new Thumb (80*column, 80*line, 65, 65, path + allFiles[i], i);
-				th.onClick = callback (onClickThumbHandler, i);
+				th.onClick = onClickThumbHandler.bind (i);
 			filesRCView.addChild ( th );
 			thumbs.push ( th );
 			

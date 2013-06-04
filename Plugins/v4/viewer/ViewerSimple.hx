@@ -6,7 +6,7 @@
 package v4.viewer;
 
 
-class ViewerSimple extends ViewerBase, implements ViewerInterface {
+class ViewerSimple extends ViewerBase implements ViewerInterface {
 	
 	
 	// After instantiation you should fill the properties from outside
@@ -16,7 +16,7 @@ class ViewerSimple extends ViewerBase, implements ViewerInterface {
 		view = this;// Required by the interface
 		
 		// This viewer does not support scrollbars, so deactivate it
-		RCWindow.sharedWindow().target.style.overflowY = "hidden";
+		RCWindow.sharedWindow().target.style.overflow = "hidden";
 	}
 	
 	/**
@@ -100,7 +100,7 @@ class ViewerSimple extends ViewerBase, implements ViewerInterface {
 	override public function destroy () :Void
 	{	
 		super.destroy();
-		RCWindow.sharedWindow().target.style.overflowY = "auto";// Show back the scrollbar
+		RCWindow.sharedWindow().target.style.overflow = "auto";// Show back the scrollbar
 	}
 	
 	

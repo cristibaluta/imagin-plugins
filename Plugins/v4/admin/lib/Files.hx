@@ -244,11 +244,11 @@ class RCFiles extends RCView {
 	}
 	
 	function showDialog () {
-		CoreAnimation.add (dialog, {y:h-dialog.height}, {duration:0.4, timingFunction:caequations.Cubic.Out});
+		RCAnimation.add (dialog, {y:h-dialog.height}, {duration:0.4, timingFunction:eq.Cubic.Out});
 	}
 	
 	function hideDialog () {
-		CoreAnimation.add (dialog, {y:h}, {duration:0.4, timingFunction:caequations.Cubic.Out});
+		RCAnimation.add (dialog, {y:h}, {duration:0.4, timingFunction:eq.Cubic.Out});
 	}
 	
 	function refresh () {

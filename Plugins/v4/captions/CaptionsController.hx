@@ -7,7 +7,7 @@
 package v4.captions;
 
 
-class CaptionsController extends RCView, implements CaptionsInterface {
+class CaptionsController extends RCView implements CaptionsInterface {
 	
 	var path :String;
 	var alignment :String;

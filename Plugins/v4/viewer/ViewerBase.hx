@@ -45,8 +45,8 @@ class ViewerBase extends RCView {
 		
 		this.limits = limits;
 		
-		setWidth ( limits.size.width );
-		setHeight ( limits.size.height );
+		set_width ( limits.size.width );
+		set_height ( limits.size.height );
 	}
 	
 	override public function destroy () :Void {

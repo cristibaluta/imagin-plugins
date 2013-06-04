@@ -7,7 +7,7 @@
 package v4.timeline;
 
 
-class Expandable extends RCView, implements TimelineInterface {
+class Expandable extends RCView implements TimelineInterface {
 	
 	public var view :RCView;
 	
@@ -98,7 +98,7 @@ class Expandable extends RCView, implements TimelineInterface {
 			
 			var p = thumbPosition (i, ts);
 			var thumb = new Thumb (p.x, p.y, ts.width, ts.height, path, files[i], i+1);
-				thumb.onClick = callback (clickThumbHandler, i);
+				thumb.onClick = clickThumbHandler.bind (i);
 			thumbs.push ( thumb );
 			thumbsView.addChild ( thumb );
 			
@@ -232,8 +232,8 @@ class Expandable extends RCView, implements TimelineInterface {
 		var next_h = thumbs[0].height + (h - thumbs[0].height) * EASING;
 		
 		for (i in 0...thumbs.length) {
-			thumbs[i].setWidth ( Math.round (next_w) );
-			thumbs[i].setHeight ( Math.round (next_h) );
+			thumbs[i].set_width ( Math.round (next_w) );
+			thumbs[i].set_height ( Math.round (next_h) );
 			thumbs[i].x = Math.round (next_w + 1) * i;
 		}
 		
@@ -298,7 +298,7 @@ class Expandable extends RCView, implements TimelineInterface {
 	 */
 	function recursiveThumbLoader (i:Int) :Void {
 		if (i < thumbs.length) {
-			thumbs[i].onInit = callback (recursiveThumbLoader, i + 1);
+			thumbs[i].onInit = recursiveThumbLoader.bind (i + 1);
 			thumbs[i].showPhoto(); // If not already loaded, load the photo first
 		}
 	}

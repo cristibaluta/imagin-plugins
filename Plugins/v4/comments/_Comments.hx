@@ -33,7 +33,7 @@ class Comments {
 		read_req = new RCHttp( null );
 		read_req.onComplete = parseComments;
 		read_req.onError = createNewXml;
-		read_req.readFile ( URL + Config.RND );
+		read_req.readFile ( URL + Config.RND() );
 	}
 	
 	function parseComments() :Void {

@@ -9,7 +9,7 @@ import haxe.Timer;
 //import RCVideo;
 
 
-class ViewerSlideshow extends ViewerBase, implements ViewerInterface {
+class ViewerSlideshow extends ViewerBase implements ViewerInterface {
 	
 	inline static var TICK :Int = 50;
 	
@@ -128,12 +128,12 @@ class ViewerSlideshow extends ViewerBase, implements ViewerInterface {
 		
 		if (currentPhoto == null) {
 			// This is the first photo loaded in the slideshow because currentPhoto didn't existed
-			var speed = Zeta.isIn (transition, TransitionController.TRANSITIONS_WITH_BACKGROUND) ? 0.6 : 0;
+			var speed = Zeta.isIn (transition, TransitionController.TRANSITIONS_WITH_BACKGROUND()) ? 0.6 : 0;
 			resizeBackground (currentPhoto, nextPhoto, transition, speed);
 			// Set the alpha of the background to 1 in a separate tween
 			if (background.alpha < 1 && enableBackground)
-			if (Zeta.isIn (t, TransitionController.TRANSITIONS_WITH_BACKGROUND.concat(["normal"])))
-				CoreAnimation.add ( new CATween (background, {alpha:1}, .6) );
+			if (Zeta.isIn (t, TransitionController.TRANSITIONS_WITH_BACKGROUND().concat(["normal"])))
+				RCAnimation.add ( new CATween (background, {alpha:1}, .6) );
 		}
 		else {
 			// We have already a photo displaying, so this is not the first photo
@@ -147,10 +147,10 @@ class ViewerSlideshow extends ViewerBase, implements ViewerInterface {
 	function fadeOut (currentPhoto:IMMediaViewerInterface, nextPhoto:IMMediaViewerInterface, t:String) :Void {
 		trace("1. fade out currentPhoto:"+currentPhoto+", nextPhoto:"+nextPhoto+", transition:"+t+", speed:"+speed);
 		
-		if (Zeta.isIn (t, TransitionController.TRANSITIONS_WITH_BACKGROUND.concat(["normal"]))) {
+		if (Zeta.isIn (t, TransitionController.TRANSITIONS_WITH_BACKGROUND().concat(["normal"]))) {
 			// Fade out the current photo with the default transition for this slideshow
 			currentPhoto.isTweening = true;
-			transitionController.fadedOut = callback (fadedOut, currentPhoto, nextPhoto, t);
+			transitionController.fadedOut = fadedOut.bind (currentPhoto, nextPhoto, t);
 			transitionController.fadeOut (currentPhoto.view, transition, speed);
 		}
 		else {
@@ -213,11 +213,11 @@ class ViewerSlideshow extends ViewerBase, implements ViewerInterface {
 #end
 		// Resize the background
 		var props = {x:frame.origin.x, y:frame.origin.y, width:frame.size.width, height:frame.size.height};
-		var obj = new CATween (background, props, s, 0, caequations.Cubic.IN_OUT);
-			obj.delegate.animationDidStop = fadeIn;
-			obj.delegate.arguments = [currentPhoto, nextPhoto, t];
+		var obj = new CATween (background, props, s, 0, eq.Cubic.IN_OUT);
+			obj.animationDidStop = fadeIn;
+			obj.arguments = [currentPhoto, nextPhoto, t];
 		
-		CoreAnimation.add ( obj );
+		RCAnimation.add ( obj );
 		//fadeIn(currentPhoto, nextPhoto, t);
 	}
 	
@@ -254,7 +254,7 @@ class ViewerSlideshow extends ViewerBase, implements ViewerInterface {
 		}
 		
 		nextPhoto.isTweening = true;
-		transitionController.fadedIn = callback (fadedIn, currentPhoto, nextPhoto);
+		transitionController.fadedIn = fadedIn.bind (currentPhoto, nextPhoto);
 		transitionController.fadeIn ( nextPhoto.view, t, s );
 	}
 	

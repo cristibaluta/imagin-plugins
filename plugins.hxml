@@ -16,7 +16,7 @@
 -cp Interface
 -cp Extern
 -cp Plugins
-../../../sdk.ralcr.hxml
+../../sdk.ralcr.hxml
 --macro excludeFile('Exclude.txt')
 #--no-traces
 
@@ -29,7 +29,7 @@
 -cp Interface
 -cp Extern
 -cp Plugins
-../../../sdk.ralcr.hxml
+../../sdk.ralcr.hxml
 --macro addMetadata('@:keep','Type','resolveClass',true)
 --macro excludeFile('Exclude.txt')
 #--no-traces
@@ -42,7 +42,7 @@
 -cp Interface
 -cp Extern
 -cp Plugins
-../../../sdk.ralcr.hxml
+../../sdk.ralcr.hxml
 --macro excludeFile('Exclude.txt')
 #--no-traces
 
@@ -55,7 +55,7 @@
 -cp Interface
 -cp Extern
 -cp Plugins
-../../../sdk.ralcr.hxml
+../../sdk.ralcr.hxml
 --macro excludeFile('Exclude.txt')
 #--no-traces
 
@@ -68,7 +68,7 @@
 -cp Interface
 -cp Extern
 -cp Plugins
-../../../sdk.ralcr.hxml
+../../sdk.ralcr.hxml
 --macro excludeFile('Exclude.txt')
 #--no-traces
 
@@ -81,7 +81,7 @@
 -cp Interface
 -cp Extern
 -cp Plugins
-../../../sdk.ralcr.hxml
+../../sdk.ralcr.hxml
 --macro excludeFile('Exclude.txt')
 #--no-traces
 
@@ -93,6 +93,6 @@
 -cp Interface
 -cp Extern
 -cp Plugins
-../../../sdk.ralcr.hxml
+../../sdk.ralcr.hxml
 --macro excludeFile('Exclude.txt')
 #--no-traces

@@ -1,7 +1,7 @@
 package v4.navigation;
 
 
-class Grouped extends NavigationBase, implements NavigationInterface {
+class Grouped extends NavigationBase implements NavigationInterface {
 	
 	var background :RCRectangle;
 	var alignmentNavigation :String;

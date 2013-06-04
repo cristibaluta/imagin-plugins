@@ -8,23 +8,23 @@ extern class Exif {
 	public var geodata :String;
 	
 	// EXIF
-	public var exposure (null, setExposure) :String;
-	public var aperture (null, setAperture) :String;
-	public var focalLength (null, setFocalLength) :String;
-	public var iso (null, setIso) :String;
-	public var exif (getExif, null) :String;
+	public var exposure (null, set) :String;
+	public var aperture (null, set) :String;
+	public var focalLength (null, set) :String;
+	public var iso (null, set) :String;
+	public var exif (get, null) :String;
 	
 	
 	public function new () :Void {}
 	
 	
-	function setExposure (val:String) :String {}
-	function setAperture (val:String) :String {}
-	function setFocalLength (val:String) :String {}
-	function setIso (val:String) :String {}
+	function set_exposure (val:String) :String {}
+	function set_aperture (val:String) :String {}
+	function set_focalLength (val:String) :String {}
+	function set_iso (val:String) :String {}
 	
 	
-	function getExif () :String {}
+	function get_exif () :String {}
 	
 	
 	public function toString () :String {}

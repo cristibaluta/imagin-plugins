@@ -66,8 +66,8 @@ class Galleries extends RCView {
 		
 		// Construct the files manager for level i
 		var album = new RCFiles (i*180, 0, 160, 300, i==0?"root:":tree[i-1]+":", path + "/");
-			album.onClick = callback (addAlbumLevel, i+1);
-			album.onComplete = callback (albumDidFinishInitialization, i);
+			album.onClick = addAlbumLevel.bind (i+1);
+			album.onComplete = albumDidFinishInitialization.bind (i);
 			album.editable = true;//(Session.get ("album") == "admin" || Session.get ("album") == "") ? true : false;
 			
 		if (i > 0)

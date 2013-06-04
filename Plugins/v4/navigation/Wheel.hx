@@ -3,7 +3,7 @@ package v4.navigation;
 import EnumDirection;
 
 
-class Wheel extends NavigationBase, implements NavigationInterface {
+class Wheel extends NavigationBase implements NavigationInterface {
 	
 	var mousew :EVMouse;
 	var canDispatch :Bool;

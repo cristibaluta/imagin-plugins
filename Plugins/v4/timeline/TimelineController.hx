@@ -7,7 +7,7 @@
 package v4.timeline;
 
 
-class TimelineController extends RCView, implements TimelineInterface {
+class TimelineController extends RCView implements TimelineInterface {
 	
 	public var view :RCView;
 	

@@ -16,17 +16,17 @@ StringTools
 Xml
 
 CADelegate
-caequations.Back
-caequations.Bounce
-caequations.Circ
-caequations.Cubic
-caequations.Elastic
-caequations.Expo
-caequations.Linear
-caequations.Quad
-caequations.Quart
-caequations.Quint
-caequations.Sine
+eq.Back
+eq.Bounce
+eq.Circ
+eq.Cubic
+eq.Elastic
+eq.Expo
+eq.Linear
+eq.Quad
+eq.Quart
+eq.Quint
+eq.Sine
 CAObject
 CATColors
 CATFilters
@@ -35,7 +35,7 @@ CATPixelator
 CATransitionInterface
 CATween
 CATZoom
-CoreAnimation
+RCAnimation
 Fugu
 EVMouse
 EVFullScreen

@@ -1,7 +1,7 @@
 package v4.navigation;
 import RCDevice;
 
-class Arrows extends NavigationBase, implements NavigationInterface {
+class Arrows extends NavigationBase implements NavigationInterface {
 	
 	
 	var butLeft :RCButton;
@@ -87,7 +87,7 @@ class Arrows extends NavigationBase, implements NavigationInterface {
 			#end
 			
 			butFullScreen = new RCButton (RCWindow.sharedWindow().width - 21, 1, s);
-			butFullScreen.onRelease = callback (clickHandler, "fullscreen");
+			butFullScreen.onRelease = clickHandler.bind ("fullscreen");
 			//IMAppDelegate.view.layerInfo.addChild ( butFullScreen );
 			
 			RCNotificationCenter.addObserver ("fullscreen", fullScreenHandler);

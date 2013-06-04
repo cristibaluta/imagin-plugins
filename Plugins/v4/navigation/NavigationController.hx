@@ -14,7 +14,7 @@
 package v4.navigation;
 
 
-class NavigationController extends NavigationBase, implements NavigationInterface {
+class NavigationController extends NavigationBase implements NavigationInterface {
 	
 	inline public static var NONE = "none";
 	inline public static var GESTURES = "gestures";

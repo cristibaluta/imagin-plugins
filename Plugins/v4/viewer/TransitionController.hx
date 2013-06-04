@@ -30,7 +30,7 @@ package v4.viewer;
 
 class TransitionController {
 	
-	inline public static var TRANSITIONS_WITH_BACKGROUND = ["colorburn", "colordodge", "fade", "pixelator"];
+	inline public static function TRANSITIONS_WITH_BACKGROUND () :Array<String> { return ["colorburn", "colordodge", "fade", "pixelator"]; }
 	
 	public var limits :RCRect;
 	var viewerIn :RCView;
@@ -55,16 +55,16 @@ class TransitionController {
 		#if flash
 			case "colorburn":	color (viewer, "colorBurnOut", speed, _fadedIn);
 			case "colordodge":	color (viewer, "colorDodgeOut", speed, _fadedIn);
-			case "pixelator":	pixelator (viewer, "pixelateOut", speed, caequations.Cubic.OUT, _fadedIn);
+			case "pixelator":	pixelator (viewer, "pixelateOut", speed, eq.Cubic.OUT, _fadedIn);
 		#end
 			case "zoomin":		zoom (viewer, "zoomInIn", speed, _fadedIn);
 			case "zoomout":		zoom (viewer, "zoomOutIn", speed, _fadedIn);
 			case "kenburns":	kenBurns (viewer, speed, _fadedIn);
 			case "slide":		fade (viewer, limits.size.width, (limits.size.width - viewer.width)/2, 0, 1, speed,
-									caequations.Cubic.IN_OUT, _fadedIn);
-			case "dissolve":	fade (viewer, viewer.x, viewer.x, 0, 1, speed, caequations.Linear.NONE, _fadedIn);
-			case "fade":		fade (viewer, viewer.x, viewer.x, 0, 1, speed, caequations.Cubic.OUT, _fadedIn);
-			default:/*none*/	fade (viewer, viewer.x, viewer.x, 0, 1, 0, caequations.Linear.NONE, _fadedIn);
+									eq.Cubic.IN_OUT, _fadedIn);
+			case "dissolve":	fade (viewer, viewer.x, viewer.x, 0, 1, speed, eq.Linear.NONE, _fadedIn);
+			case "fade":		fade (viewer, viewer.x, viewer.x, 0, 1, speed, eq.Cubic.OUT, _fadedIn);
+			default:/*none*/	fade (viewer, viewer.x, viewer.x, 0, 1, 0, eq.Linear.NONE, _fadedIn);
 		}
 	}
 	
@@ -76,16 +76,16 @@ class TransitionController {
 		#if flash
 			case "colorburn":	color (viewer, "colorBurnIn", speed, _fadedOut);
 			case "colordodge":	color (viewer, "colorDodgeIn", speed, _fadedOut);
-			case "pixelator":	pixelator (viewer, "pixelateIn", speed, caequations.Cubic.IN, _fadedOut);
+			case "pixelator":	pixelator (viewer, "pixelateIn", speed, eq.Cubic.IN, _fadedOut);
 		#end
 			case "zoomin":		zoom (viewer, "zoomInOut", speed, _fadedOut);
 			case "zoomout":		zoom (viewer, "zoomOutOut", speed, _fadedOut);
 			case "kenburns":	kenBurns (viewer, speed, _fadedOut);
 			case "slide":		fade (viewer, (limits.size.width - viewer.width)/2, - viewer.width, 1, 0, speed,
-									caequations.Cubic.IN_OUT, _fadedOut);
-			case "dissolve":	fade (viewer, viewer.x, viewer.x, 1, 0, speed, caequations.Linear.NONE, _fadedOut);
-			case "fade":		fade (viewer, viewer.x, viewer.x, 1, 0, speed, caequations.Cubic.IN, _fadedOut);
-			default:/*none*/	fade (viewer, viewer.x, viewer.x, 1, 0, 0, caequations.Linear.NONE, _fadedOut);
+									eq.Cubic.IN_OUT, _fadedOut);
+			case "dissolve":	fade (viewer, viewer.x, viewer.x, 1, 0, speed, eq.Linear.NONE, _fadedOut);
+			case "fade":		fade (viewer, viewer.x, viewer.x, 1, 0, speed, eq.Cubic.IN, _fadedOut);
+			default:/*none*/	fade (viewer, viewer.x, viewer.x, 1, 0, 0, eq.Linear.NONE, _fadedOut);
 		}
 	}
 	
@@ -100,10 +100,10 @@ class TransitionController {
 		Fugu.resetColor ( viewer );
 		
 		var obj = new CATColors (viewer, {color: kindOfColorTransformation}, speed);
-			obj.delegate.animationDidStop = F;
-			obj.timingFunction = caequations.Cubic.IN_OUT;
+			obj.animationDidStop = F;
+			obj.timingFunction = eq.Cubic.IN_OUT;
 			
-		CoreAnimation.add ( obj );
+		RCAnimation.add ( obj );
 	}
 	
 	/**
@@ -118,9 +118,9 @@ class TransitionController {
 		var properties = {pixelSize: kindOfPixelation};
 		var obj = new CATPixelator (viewer, properties, speed);
 			obj.timingFunction = timingFunction;
-			obj.delegate.animationDidStop = F;
+			obj.animationDidStop = F;
 			
-		CoreAnimation.add ( obj );
+		RCAnimation.add ( obj );
 	}
 #end
 	
@@ -137,10 +137,10 @@ class TransitionController {
 		
 		var properties = {x:{fromValue:fromX, toValue:toX}, alpha:{fromValue:fromA, toValue:toA}};
 		var obj = new CATween (viewer, properties, speed);
-			obj.delegate.animationDidStop = F;
+			obj.animationDidStop = F;
 			obj.timingFunction = timingFunction;
 			
-		CoreAnimation.add ( obj );
+		RCAnimation.add ( obj );
 	}
 	
 	
@@ -153,10 +153,10 @@ class TransitionController {
 		
 		var properties = {zoom: kindOfZoom};
 		var obj = new CATZoom (viewer, properties, speed);
-			obj.delegate.animationDidStop = F;
-			obj.timingFunction = caequations.Cubic.OUT;
+			obj.animationDidStop = F;
+			obj.timingFunction = eq.Cubic.OUT;
 			
-		CoreAnimation.add ( obj );
+		RCAnimation.add ( obj );
 	}
 	
 	
@@ -166,15 +166,15 @@ class TransitionController {
 		
 		var properties = {};
 		var obj = new CATKenBurns (viewer, properties, speed);
-			obj.timingFunction = caequations.Linear.NONE;
+			obj.timingFunction = eq.Linear.NONE;
 			obj.constraintBounds = new RCRect (0, 0, limits.size.width, limits.size.height);
 			
 		if (F == _fadedOut)
-			obj.delegate.kenBurnsDidFadedIn = F;
+			obj.kenBurnsDidFadedIn = F;
 		else
-			obj.delegate.kenBurnsBeginsFadingOut = F;
+			obj.kenBurnsBeginsFadingOut = F;
 			
-		CoreAnimation.add ( obj );
+		RCAnimation.add ( obj );
 	}
 	
 	
@@ -184,12 +184,12 @@ class TransitionController {
 	
 	// clean active transitions
 	public function terminateLastTransition () :Void {
-		CoreAnimation.remove ( viewerIn );
-		CoreAnimation.remove ( viewerOut );
+		RCAnimation.remove ( viewerIn );
+		RCAnimation.remove ( viewerOut );
 	}
 	
 	public function destroy () :Void {
-		CoreAnimation.remove ( viewerIn );
-		CoreAnimation.remove ( viewerOut );
+		RCAnimation.remove ( viewerIn );
+		RCAnimation.remove ( viewerOut );
 	}
 }

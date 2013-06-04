@@ -108,13 +108,13 @@ class CaptionView extends RCView {
 		butFacebook = new RCButton (0, 0, s);
 		//butFacebook.onRelease = callback (HXAddress.popup, "http://www.facebook.com/sharer.php?u="+js.Lib.window.location.href, "fb_im_popup", "", "");
 		butFacebook.onRelease = function() {
-			HXAddress.popup ("http://www.facebook.com/sharer.php?u="+js.Lib.window.location.href, "fb_im_popup", "", "");
+			HXAddress.popup ("http://www.facebook.com/sharer.php?u="+js.Browser.window.location.href, "fb_im_popup", "", "");
 		}
 		addChild ( butFacebook );
 		
 		var s = new SkinButtonWithImage (Config.THEME_PATH+"LogoTwitter.png");
 		butTwitter = new RCButton (20, 0, s);
-		butTwitter.onRelease = callback (HXAddress.href, "http://twitter.com", "_blank");
+		butTwitter.onRelease = HXAddress.href.bind ("http://twitter.com", "_blank");
 		addChild ( butTwitter );
 		
 		
@@ -172,21 +172,21 @@ class CaptionView extends RCView {
 		if (location.indexOf ("http://") == 0) {
 			// We have link to flickr (theoreticaly)
 			link = constructButton();
-			link.onClick = callback (goto, location);
+			link.onClick = goto.bind (location);
 			this.addChild ( link );
 		}
 		else if (geodata != "" && geodata != "+" && geodata != null) {
 			// We have geodata coordinates in photo exif
 			var google_maps_link = "http://maps.google.com/maps?q=" + geodata;
 			link = constructButton();
-			link.onClick = callback (goto, google_maps_link);
+			link.onClick = goto.bind (google_maps_link);
 			this.addChild ( link );
 		}
 		else if (location != "" && location != null) {
 			// We have Wikimapia longitude and latitude
 			var wikimapia_link = "http://wikimapia.org/#" + location + "&z=16&l=0&m=a&v=2";
 			link = constructButton();
-			link.onClick = callback (goto, wikimapia_link);
+			link.onClick = goto.bind (wikimapia_link);
 			this.addChild ( link );
 		}
 		
