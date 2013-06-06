@@ -17,8 +17,11 @@
 -cp Extern
 -cp Plugins
 ../../sdk.ralcr.hxml
+--macro addMetadata('@:keep','Type','createInstance',true)
+--macro addMetadata('@:keep','Type','resolveClass',true)
 --macro excludeFile('Exclude.txt')
 #--no-traces
+-D js-classic
 
 
 
@@ -30,9 +33,11 @@
 -cp Extern
 -cp Plugins
 ../../sdk.ralcr.hxml
+--macro addMetadata('@:keep','Type','createInstance',true)
 --macro addMetadata('@:keep','Type','resolveClass',true)
 --macro excludeFile('Exclude.txt')
 #--no-traces
+-D js-classic
 
 
 # Compile the navigation plugin for JS
@@ -43,8 +48,11 @@
 -cp Extern
 -cp Plugins
 ../../sdk.ralcr.hxml
+--macro addMetadata('@:keep','Type','createInstance',true)
+--macro addMetadata('@:keep','Type','resolveClass',true)
 --macro excludeFile('Exclude.txt')
 #--no-traces
+-D js-classic
 
 
 
@@ -56,8 +64,11 @@
 -cp Extern
 -cp Plugins
 ../../sdk.ralcr.hxml
+--macro addMetadata('@:keep','Type','createInstance',true)
+--macro addMetadata('@:keep','Type','resolveClass',true)
 --macro excludeFile('Exclude.txt')
 #--no-traces
+-D js-classic
 
 
 
@@ -69,8 +80,11 @@
 -cp Extern
 -cp Plugins
 ../../sdk.ralcr.hxml
+--macro addMetadata('@:keep','Type','createInstance',true)
+--macro addMetadata('@:keep','Type','resolveClass',true)
 --macro excludeFile('Exclude.txt')
 #--no-traces
+-D js-classic
 
 
 
@@ -82,8 +96,11 @@
 -cp Extern
 -cp Plugins
 ../../sdk.ralcr.hxml
+--macro addMetadata('@:keep','Type','createInstance',true)
+--macro addMetadata('@:keep','Type','resolveClass',true)
 --macro excludeFile('Exclude.txt')
 #--no-traces
+-D js-classic
 
 
 
@@ -94,5 +111,8 @@
 -cp Extern
 -cp Plugins
 ../../sdk.ralcr.hxml
+--macro addMetadata('@:keep','Type','createInstance',true)
+--macro addMetadata('@:keep','Type','resolveClass',true)
 --macro excludeFile('Exclude.txt')
 #--no-traces
+-D js-classic

@@ -6,17 +6,19 @@
 package v4.viewer;
 
 
-class ViewerSimple extends ViewerBase implements ViewerInterface {
+@:keep class ViewerSimple extends ViewerBase implements ViewerInterface {
 	
 	
 	// After instantiation you should fill the properties from outside
 	public function new () {
 		trace("new ViewerSimple() - PLUGIN");
 		super (0, 0);
+		
 		view = this;// Required by the interface
 		
 		// This viewer does not support scrollbars, so deactivate it
-		RCWindow.sharedWindow().target.style.overflow = "hidden";
+		untyped RCWindow.sharedWindow().target.style.overflowY = "hidden";
+		trace("fin");
 	}
 	
 	/**
@@ -100,12 +102,12 @@ class ViewerSimple extends ViewerBase implements ViewerInterface {
 	override public function destroy () :Void
 	{	
 		super.destroy();
-		RCWindow.sharedWindow().target.style.overflow = "auto";// Show back the scrollbar
+		untyped RCWindow.sharedWindow().target.style.overflowY = "auto";// Show back the scrollbar
 	}
 	
 	
 	// Don't do anything, plugins are instantiated from the master software when needed.
 	public static function main(){
-		Type.resolveClass("");// Hack to include the class definitions in the generated code
+		Type.resolveClass("");// Hack to store in the $hxClasses the class names so they can be used with Type
 	}
 }

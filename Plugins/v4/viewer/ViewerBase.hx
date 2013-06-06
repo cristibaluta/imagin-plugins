@@ -1,7 +1,7 @@
 package v4.viewer;
 
 
-class ViewerBase extends RCView {
+@:keep class ViewerBase extends RCView {
 	
 	// Settings initialized from the Logic Controller
 	public var view :RCView;
@@ -31,7 +31,7 @@ class ViewerBase extends RCView {
 	
 	// After instantiation you should fill the properties from outside
 	public function new (x, y) {
-		
+		trace("new viewerbase");
 		super (x, y);
 		
 		view = this;// Required by the interface
