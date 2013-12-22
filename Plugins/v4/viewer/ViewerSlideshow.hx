@@ -9,7 +9,7 @@ import haxe.Timer;
 //import RCVideo;
 
 
-class ViewerSlideshow extends ViewerBase implements ViewerInterface {
+@:keep class ViewerSlideshow extends ViewerBase implements ViewerInterface {
 	
 	inline static var TICK :Int = 50;
 	

@@ -40,6 +40,21 @@
 -D js-classic
 
 
+# Compile the simple viewer plugin for JS
+--next
+-js ../../Publish/files.imagin/plugins/ViewerPageFlow.js
+-main v4.viewer.ViewerPageFlow
+-cp Interface
+-cp Extern
+-cp Plugins
+../../sdk.ralcr.hxml
+--macro addMetadata('@:keep','Type','createInstance',true)
+--macro addMetadata('@:keep','Type','resolveClass',true)
+--macro excludeFile('Exclude.txt')
+#--no-traces
+-D js-classic
+
+
 # Compile the navigation plugin for JS
 --next
 -js ../../Publish/files.imagin/plugins/Navigation.js
