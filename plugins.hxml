@@ -104,18 +104,18 @@
 
 
 # Compile the admin plugin
---next
--js ../../Publish/files.imagin/plugins/Admin.js
--main v4.admin.AdminController
--cp Interface
--cp Extern
--cp Plugins
-../../sdk.ralcr.hxml
---macro addMetadata('@:keep','Type','createInstance',true)
---macro addMetadata('@:keep','Type','resolveClass',true)
---macro excludeFile('Exclude.txt')
+#--next
+#-js ../../Publish/files.imagin/plugins/Admin.js
+#-main v4.admin.AdminController
+#-cp Interface
+#-cp Extern
+#-cp Plugins
+#../../sdk.ralcr.hxml
+#--macro addMetadata('@:keep','Type','createInstance',true)
+#--macro addMetadata('@:keep','Type','resolveClass',true)
+#--macro excludeFile('Exclude.txt')
 #--no-traces
--D js-classic
+#-D js-classic
 
 
 

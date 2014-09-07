@@ -28,11 +28,12 @@ import haxe.Timer;
 		view = this;// Required by the interface
 	}
 	
+	
 	/**
 	*  Init the viewer
 	*  file = the filename that should start the slideshow with. Optional parameter
 	**/
-	public function initWithFile (?file:String) :Void {
+	public function initWithFile (?file:String) {
 		trace("init ( "+file+" )");
 		//this.addChild ( bg = new RCRectangle (0,0, limits.size.width, limits.size.height, 0xff300, 0.2) );
 		
@@ -68,7 +69,7 @@ import haxe.Timer;
 	/**
 	 *  Control the Slideshow
 	 */
-	public function startSlideshow () :Void {
+	public function startSlideshow () {
 		trace("start slideshow and create timer");
 		slideshowIsRunning = true;
 		if (timer == null)
@@ -76,14 +77,14 @@ import haxe.Timer;
 			timer.run = timerTickHandler;
 	}
 	
-	public function pauseSlideshow () :Void {
+	public function pauseSlideshow () {
 		trace("pause slideshow");
 		slideshowIsRunning = false;
 		if (timer != null)
 			timer.stop();
 	}
 	
-	public function stopSlideshow () :Void {
+	public function stopSlideshow () {
 		trace("stop slideshow and remove timer");
 		pauseSlideshow();
 		currentCount = 0;
@@ -92,8 +93,7 @@ import haxe.Timer;
 			timer = null;
 	}
 	
-	function timerTickHandler ()
-	{
+	function timerTickHandler () {
 		currentCount ++;
 		tick.dispatch ( currentCount, maxCount );
 		
@@ -102,11 +102,6 @@ import haxe.Timer;
 			timerComplete.dispatch();
 		}
 	}
-	
-	
-	
-	
-	
 	
 	
 	/**
@@ -118,6 +113,14 @@ import haxe.Timer;
 	
 	 *	transition - pass the transition to be used through the entire slide cycle
 	 **/
+	
+	public function addPhoto (	prevPhoto:IMMediaViewerInterface,
+								nextPhoto:IMMediaViewerInterface,
+								mouseActioned:Bool)
+	{
+		
+	}
+	
 	public function switchPhotos (	currentPhoto:IMMediaViewerInterface,
 									nextPhoto:IMMediaViewerInterface,
 									mouseActioned:Bool) :Void
@@ -141,8 +144,6 @@ import haxe.Timer;
 			fadeOut (currentPhoto, nextPhoto, t);
 		}
 	}
-	
-	
 	
 	function fadeOut (currentPhoto:IMMediaViewerInterface, nextPhoto:IMMediaViewerInterface, t:String) :Void {
 		trace("1. fade out currentPhoto:"+currentPhoto+", nextPhoto:"+nextPhoto+", transition:"+t+", speed:"+speed);
@@ -292,7 +293,6 @@ import haxe.Timer;
 		slideCycleFinished.dispatch();
 	}
 	// << END SLIDE CICLE
-	
 	
 	
 	/**

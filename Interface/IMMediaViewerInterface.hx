@@ -6,6 +6,7 @@ interface IMMediaViewerInterface {
 	public var isLoaded :Bool;
 	public var isTweening :Bool;
 	public var isVideo (get, null) :Bool;
+	public var index :Int;
 	//public var scale (null, setScale) :Float;
 	
 	public function get_isVideo () :Bool;

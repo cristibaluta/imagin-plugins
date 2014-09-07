@@ -62,7 +62,7 @@ package v4.viewer;
 	 **/
 	public function switchPhotos (	currentPhoto:IMMediaViewerInterface,
 									nextPhoto:IMMediaViewerInterface,
-									mouseActioned:Bool) :Void
+									mouseActioned:Bool)
 	{
 		
 		if (currentPhoto != null)
@@ -76,9 +76,16 @@ package v4.viewer;
 		
 	}
 	
+	public function addPhoto (	prevPhoto:IMMediaViewerInterface,
+								nextPhoto:IMMediaViewerInterface,
+								mouseActioned:Bool)
+	{
+		
+	}
+	
 	
 	// Called each time the window resizes
-	public function arrangePhoto (photo:IMMediaViewerInterface) :Void {
+	public function arrangePhoto (photo:IMMediaViewerInterface) {
 		
 		if (photo != null && photo.isLoaded) {
 			
@@ -92,15 +99,12 @@ package v4.viewer;
 		}
 	}
 	
-	override public function resize (limits:RCRect) :Void {
+	override public function resize (limits:RCRect) {
 		
 		super.resize ( limits );
-		
-		
 	}
 	
-	override public function destroy () :Void
-	{	
+	override public function destroy () {	
 		super.destroy();
 		untyped RCWindow.sharedWindow().target.style.overflowY = "auto";// Show back the scrollbar
 	}

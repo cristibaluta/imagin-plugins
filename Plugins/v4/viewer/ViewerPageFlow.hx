@@ -8,6 +8,9 @@ package v4.viewer;
 
 @:keep class ViewerPageFlow extends ViewerBase implements ViewerInterface {
 	
+	var ys :Map<Int,Float>;
+	var already_scrolled :Bool;
+	var bottomLine :RCRectangle;
 	
 	// After instantiation you should fill the properties from outside
 	public function new () {
@@ -15,9 +18,13 @@ package v4.viewer;
 		super (0, 0);
 		
 		view = this;// Required by the interface
+		ys = new Map<Int,Float>();
 		
-		// This viewer does not support scrollbars, so deactivate it
+		// This viewer supports y scrollbar
 		untyped RCWindow.sharedWindow().target.style.overflowY = "auto";
+		
+		bottomLine = new RCRectangle(0, 0, 10, 50, 0x000000);
+		addChild ( bottomLine );
 	}
 	
 	/**
@@ -47,10 +54,6 @@ package v4.viewer;
 	}
 	
 	
-	
-	
-	
-	
 	/**
 	 *	START A SLIDE CYCLE
 	 *
@@ -62,28 +65,51 @@ package v4.viewer;
 	 **/
 	public function switchPhotos (	currentPhoto:IMMediaViewerInterface,
 									nextPhoto:IMMediaViewerInterface,
-									mouseActioned:Bool) :Void
+									mouseActioned:Bool)
 	{
 		
-/*		if (currentPhoto != null)
-			currentPhoto.view.removeFromSuperview();*/
-		
-		// Add nextPhoto to the display list, resize and reposition it
+	}
+	
+	public function addPhoto (	prevPhoto:IMMediaViewerInterface,
+								nextPhoto:IMMediaViewerInterface,
+								mouseActioned:Bool)
+	{
 		nextPhoto.view.alpha = 1;
 		nextPhoto.view.resetScale();
 		this.addChild ( nextPhoto.view );
+		
+		// First arrange the photo in the center of the page
 		arrangePhoto ( nextPhoto );
 		
+		// Then reposition on Y axis to flow one after another
+		var old_y :Null<Float> = ys.get(nextPhoto.index);
 		
-		if (currentPhoto == null) nextPhoto.view.y = 0;
-		else nextPhoto.view.y = currentPhoto.view.y + currentPhoto.view.height + 20;
+		if (old_y != null) {
+			nextPhoto.view.y = old_y;
+		}
+		else if (prevPhoto == null) {
+			// Appoximate position based on a fixed height
+			nextPhoto.view.y = 0 + (nextPhoto.view.height + 20) * nextPhoto.index;
+			ys.set(nextPhoto.index, nextPhoto.view.y);
+			if (!already_scrolled) {
+				js.Browser.window.scrollTo (0, Math.round(-70 + (nextPhoto.view.height + 20) * nextPhoto.index));
+				already_scrolled = true;
+			}
+		}
+		else {
+			nextPhoto.view.y = prevPhoto.view.y + prevPhoto.view.height + 20;
+			ys.set(nextPhoto.index, nextPhoto.view.y);
+		}
+		if (nextPhoto.view.y + nextPhoto.view.height > bottomLine.y) {
+			bottomLine.y = nextPhoto.view.y + nextPhoto.view.height;
+		}
+/*		trace('photo ${nextPhoto.index} was added to y ${nextPhoto.view.y} $old_y');*/
 		
 		haxe.Timer.delay ( function(){ slideCycleFinished.dispatch(); }, 10);
 	}
 	
-	
 	// Called each time the window resizes
-	public function arrangePhoto (photo:IMMediaViewerInterface) :Void {
+	public function arrangePhoto (photo:IMMediaViewerInterface) {
 		
 		if (photo != null && photo.isLoaded) {
 			
@@ -94,19 +120,14 @@ package v4.viewer;
 			
 			// Align the photo in the provided limits
 			Fugu.align (photo.view, alignmentPhotos, limits.size.width, limits.size.height, photo.view.width, photo.view.height);
-			
 		}
 	}
 	
-	override public function resize (limits:RCRect) :Void {
-		
+	override public function resize (limits:RCRect) {
 		super.resize ( limits );
-		
-		
 	}
 	
-	override public function destroy () :Void
-	{	
+	override public function destroy () {	
 		super.destroy();
 	}
 	

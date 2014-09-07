@@ -14,6 +14,7 @@ class NavigationBase extends RCView implements NavigationInterface {
 	dynamic public function onPause () :Void {}
 	dynamic public function onStart () :Void {}
 	dynamic public function onStop () :Void {}
+	dynamic public function onNumberSelected (i:Int) :Void {}
 	
 	function goLeft () :Void { onLeft(); }
 	function goRight () :Void { onRight(); }
@@ -21,6 +22,7 @@ class NavigationBase extends RCView implements NavigationInterface {
 	function goPause () :Void { onPause(); }
 	function goStart () :Void { onStart(); }
 	function goStop () :Void { onStop(); }
+	function goTo (i:Int) :Void { onNumberSelected(i); }
 	
 	
 	

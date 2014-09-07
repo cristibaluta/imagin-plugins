@@ -30,6 +30,7 @@ public function startSlideshow () :Void;
 public function stopSlideshow () :Void;
 public function pauseSlideshow () :Void;
 public function switchPhotos (current:IMMediaViewerInterface, next:IMMediaViewerInterface, mouseActioned:Bool) :Void;
+public function addPhoto (previous:IMMediaViewerInterface, next:IMMediaViewerInterface, mouseActioned:Bool) :Void;
 public function resize (limits:RCRect) :Void;
 public function arrangePhoto (photoView:IMMediaViewerInterface) :Void;
 public function destroy () :Void;

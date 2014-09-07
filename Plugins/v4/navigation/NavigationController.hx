@@ -22,6 +22,7 @@ class NavigationController extends NavigationBase implements NavigationInterface
 	inline public static var ARROWS = "arrows";
 	inline public static var KEYBOARD = "keyboard";
 	inline public static var WHEEL = "wheel";
+	inline public static var SCROLL = "scroll";
 	
 	
 	var navigations :Array<NavigationBase>;
@@ -41,14 +42,15 @@ class NavigationController extends NavigationBase implements NavigationInterface
 		for (nav in navigationTypes) {
 			
 			var navigation :NavigationBase = null;
+			
 			switch ( nav ) {
 				
-				case NONE:		navigation = null;
 				case GESTURES:	navigation = new Gestures ( mouseArea );
 				case ARROWS:	navigation = new Arrows ( mouseArea );
 				case GROUPED:	navigation = new Grouped ( mouseArea );
 				case KEYBOARD:	navigation = new Keys();
 				case WHEEL:		navigation = new Wheel ( mouseArea );
+				case SCROLL:	navigation = new Scroll ( mouseArea );
 			}
 			
 			if (navigation != null) {
@@ -59,6 +61,7 @@ class NavigationController extends NavigationBase implements NavigationInterface
 				navigation.onPause = goPause;
 				navigation.onStart = goStart;
 				navigation.onStop = goStop;
+				navigation.onNumberSelected = goTo;
 				
 				addChild ( navigation.view );
 				navigations.push ( navigation );
@@ -67,8 +70,6 @@ class NavigationController extends NavigationBase implements NavigationInterface
 			
 		}
 	}
-	
-	
 	
 	override public function resume () :Void {
 		
@@ -87,8 +88,6 @@ class NavigationController extends NavigationBase implements NavigationInterface
 		for(nav in navigations)
 			nav.resize ( limits );
 	}
-	
-	
 	
 	override public function destroy () :Void {
 		
