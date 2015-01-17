@@ -8,8 +8,8 @@ interface CaptionsInterface {
 
 public var view :RCView;
 
-public function show (photo:Photo) :Void;
-public function remove (photo:Photo) :Void;
+public function show (photo:IMPhoto) :Void;
+public function remove (photo:IMPhoto) :Void;
 public function resize (w:Int, h:Int) :Void;
 public function destroy () :Void;
 

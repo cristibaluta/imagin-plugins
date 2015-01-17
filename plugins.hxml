@@ -4,7 +4,7 @@
 # -swf-header 1000:600:40
 # -swf-version 9
 # -swf-lib Resources/resources.swf
-# -main v4.viewer.ViewerSlideshow
+# -main im.viewer.ViewerSlideshow
 # -cp Common
 # -cp Extern
 # -cp Plugins
@@ -12,7 +12,7 @@
 
 # Compile the slideshow plugin for JS
 -js ../../Publish/files.imagin/plugins/ViewerSlideshow.js
--main v4.viewer.ViewerSlideshow
+-main im.viewer.ViewerSlideshow
 -cp Interface
 -cp Extern
 -cp Plugins
@@ -28,7 +28,7 @@
 # Compile the simple viewer plugin for JS
 --next
 -js ../../Publish/files.imagin/plugins/ViewerSimple.js
--main v4.viewer.ViewerSimple
+-main im.viewer.ViewerSimple
 -cp Interface
 -cp Extern
 -cp Plugins
@@ -43,7 +43,7 @@
 # Compile the simple viewer plugin for JS
 --next
 -js ../../Publish/files.imagin/plugins/ViewerPageFlow.js
--main v4.viewer.ViewerPageFlow
+-main im.viewer.ViewerPageFlow
 -cp Interface
 -cp Extern
 -cp Plugins
@@ -58,7 +58,7 @@
 # Compile the navigation plugin for JS
 --next
 -js ../../Publish/files.imagin/plugins/Navigation.js
--main v4.navigation.NavigationController
+-main im.navigation.NavigationController
 -cp Interface
 -cp Extern
 -cp Plugins
@@ -74,7 +74,7 @@
 # Compile the timeline plugin for JS
 --next
 -js ../../Publish/files.imagin/plugins/Timeline.js
--main v4.timeline.TimelineController
+-main im.timeline.TimelineController
 -cp Interface
 -cp Extern
 -cp Plugins
@@ -90,7 +90,7 @@
 # Compile the captions plugin for JS
 --next
 -js ../../Publish/files.imagin/plugins/Captions.js
--main v4.captions.CaptionsController
+-main im.captions.CaptionsController
 -cp Interface
 -cp Extern
 -cp Plugins
@@ -106,7 +106,7 @@
 # Compile the admin plugin
 #--next
 #-js ../../Publish/files.imagin/plugins/Admin.js
-#-main v4.admin.AdminController
+#-main im.admin.AdminController
 #-cp Interface
 #-cp Extern
 #-cp Plugins
@@ -121,7 +121,7 @@
 
 --next
 -js ../../Publish/files.imagin/plugins/Video.js
--main v4.video.VideoController
+-main im.video.VideoController
 -cp Interface
 -cp Extern
 -cp Plugins

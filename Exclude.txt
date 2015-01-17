@@ -73,9 +73,9 @@ RCWindow
 video.MainVideo
 Zeta
 
-Config
+IMConfig
 Exif
-Photo
-Preferences
+IMPhoto
+IMPreferences
 IMMediaViewerInterface
 IMURLRequest
