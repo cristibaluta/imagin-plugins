@@ -1,5 +1,5 @@
 
-interface NavigationInterface {
+interface IMNavigationInterface {
 
 public var view :RCView;
 

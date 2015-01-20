@@ -1,5 +1,5 @@
 
-interface NavigationProtocol {
+interface IMNavigationProtocol {
 
 	public function navigationLeft () :Void;
 	public function navigationRight () :Void;

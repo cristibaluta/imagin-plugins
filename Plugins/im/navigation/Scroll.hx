@@ -3,7 +3,7 @@ package im.navigation;
 import EnumDirection;
 
 
-class Scroll extends NavigationBase implements NavigationInterface {
+class Scroll extends NavigationBase implements IMNavigationInterface {
 	
 	var mousew :EVMouse;
 	var currentIndex :Int;

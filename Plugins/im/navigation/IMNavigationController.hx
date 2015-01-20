@@ -14,7 +14,7 @@
 package im.navigation;
 
 
-class NavigationController extends NavigationBase implements NavigationInterface {
+class IMNavigationController extends NavigationBase implements IMNavigationInterface {
 	
 	inline public static var NONE = "none";
 	inline public static var GESTURES = "gestures";

@@ -3,7 +3,7 @@ package im.navigation;
 import EnumDirection;
 
 
-class Gestures extends NavigationBase implements NavigationInterface {
+class Gestures extends NavigationBase implements IMNavigationInterface {
 	
 	//var cursor :RCCustomCursor;
 	//var mouseg :RCGestureRecognizer;

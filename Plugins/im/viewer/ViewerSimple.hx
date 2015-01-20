@@ -6,7 +6,7 @@
 package im.viewer;
 
 
-@:keep class ViewerSimple extends ViewerBase implements ViewerInterface {
+@:keep class ViewerSimple extends ViewerBase implements IMViewerInterface {
 	
 	
 	// After instantiation you should fill the properties from outside
@@ -61,7 +61,6 @@ package im.viewer;
 									nextPhoto:IMMediaViewerInterface,
 									mouseActioned:Bool)
 	{
-		trace("+++++++++++ swch "+nextPhoto.index);
 		if (currentPhoto != null)
 			currentPhoto.view.removeFromSuperview();
 		
@@ -77,7 +76,7 @@ package im.viewer;
 								nextPhoto:IMMediaViewerInterface,
 								mouseActioned:Bool)
 	{
-		trace("+++++++++++ add");
+		
 	}
 	
 	

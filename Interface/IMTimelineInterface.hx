@@ -4,7 +4,7 @@
 //  Created by Baluta Cristian on 2009-08-16.
 //  Copyright (c) 2009 http://ralcr.com. All rights reserved.
 //
-interface TimelineInterface {
+interface IMTimelineInterface {
 
 public var view :RCView;
 

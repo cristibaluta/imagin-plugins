@@ -1,5 +1,5 @@
 
-@:expose interface ViewerInterface {
+@:expose interface IMViewerInterface {
 
 public var view :RCView;
 public var previewsLimits :RCRect;

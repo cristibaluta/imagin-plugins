@@ -4,7 +4,7 @@
 //  Created by Baluta Cristian on 2009-08-16.
 //  Copyright (c) 2009 http://ralcr.com. All rights reserved.
 //
-interface TimelineProtocol {
+interface IMTimelineProtocol {
 
 // You should realign the timeline while is zooming
 public function timelineZooming (currentItem:Int) :Void;

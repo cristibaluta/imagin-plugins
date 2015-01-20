@@ -1,7 +1,7 @@
 package im.navigation;
 import RCDevice;
 
-class Arrows extends NavigationBase implements NavigationInterface {
+class Arrows extends NavigationBase implements IMNavigationInterface {
 	
 	
 	var butLeft :RCButton;

@@ -7,7 +7,7 @@
 package im.timeline;
 
 
-class Digits extends MenuBackground implements TimelineInterface {
+class Digits extends MenuBackground implements IMTimelineInterface {
 	
 	public var view :RCView;
 	

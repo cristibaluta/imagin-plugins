@@ -3,7 +3,7 @@ package im.navigation;
 import EnumDirection;
 
 
-class NavigationBase extends RCView implements NavigationInterface {
+class NavigationBase extends RCView implements IMNavigationInterface {
 	
 	public var view :RCView;
 	var mouseArea :RCRectangle;

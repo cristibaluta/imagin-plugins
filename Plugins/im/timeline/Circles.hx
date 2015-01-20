@@ -1,20 +1,20 @@
 //
-//  Horizontal
+//  Circles Timeline
 //
-//  Created by Baluta Cristian on 2011-07-08.
-//  Copyright (c) 2012 ralcr.com. All rights reserved.
+//  Created by Baluta Cristian on 2015-01-20.
+//  Copyright (c) 2015 ralcr.com. All rights reserved.
 //
 package im.timeline;
 
 
-class Vertical extends Expandable implements IMTimelineInterface {
+class Circles extends Expandable implements IMTimelineInterface {
 	
 	
-	override public function init () :Void {
+	override public function init () {
 		
 		// Recalculate the width of the timeline
 		var h = ( thumbSize().height + 1 ) * _files.length;// real length of the timeline
-		clipsToBounds = true;
+/*		clipsToBounds = true;*/
 		
 		// Add the slightly rounded background
 		var r = Math.round (IMConfig.ROUNDNESS / 2);
@@ -25,10 +25,29 @@ class Vertical extends Expandable implements IMTimelineInterface {
 	}
 	
 	
+	/**
+	 * Add thumbs and separators between each thumb
+	 */
+	override function addThumbs () :Void {
+		
+		_thumbs = new Array<RCControl>();
+		var ts = thumbSize();
+		
+		// Iterate over files and create thumbs
+		for (i in 0..._files.length) {
+			
+			var p = thumbPosition (i, ts);
+			var thumb = new ThumbCircle (p.x, p.y, ts.width, ts.height, _path, _files[i], i+1);
+				thumb.onClick = clickThumbHandler.bind ( i );
+			_thumbs.push ( thumb );
+			_thumbsView.addChild ( thumb );
+		}
+	}
+	
 	
 	// Update the slider position in timeline
 	
-	override public function updateSliderPosition (currentItem:Int, currentTime:Int, slideshow_is_running:Bool) :Void {
+	override public function updateSliderPosition (currentItem:Int, currentTime:Int, slideshow_is_running:Bool) {
 		
 		super.updateSliderPosition (currentItem, currentTime, slideshow_is_running);
 		
@@ -44,8 +63,6 @@ class Vertical extends Expandable implements IMTimelineInterface {
 		_slider.x = Math.round (_thumbs[_nr].width / 2);
 		_slider.y = Math.round (_thumbs[_nr].y + _thumbs[_nr].height / 2);
 	}
-	
-	
 	
 	
 	// Utilities
@@ -64,10 +81,10 @@ class Vertical extends Expandable implements IMTimelineInterface {
 	override function separatorSize () :RCSize {
 		return new RCSize (2, 1);
 	}
+	
 	override function separatorPosition (i:Int, s:RCSize) :RCPoint {
 		return new RCPoint ( 2, (s.height + 1) * (i + 1) - 1 );
 	}
-	
 	
 	
 	// Returns the correct y of the slider depending on the y of the mouse

@@ -58,7 +58,7 @@
 # Compile the navigation plugin for JS
 --next
 -js ../../Publish/files.imagin/plugins/Navigation.js
--main im.navigation.NavigationController
+-main im.navigation.IMNavigationController
 -cp Interface
 -cp Extern
 -cp Plugins
@@ -74,7 +74,7 @@
 # Compile the timeline plugin for JS
 --next
 -js ../../Publish/files.imagin/plugins/Timeline.js
--main im.timeline.TimelineController
+-main im.timeline.IMTimelineController
 -cp Interface
 -cp Extern
 -cp Plugins
@@ -90,7 +90,7 @@
 # Compile the captions plugin for JS
 --next
 -js ../../Publish/files.imagin/plugins/Captions.js
--main im.captions.CaptionsController
+-main im.captions.IMCaptionsController
 -cp Interface
 -cp Extern
 -cp Plugins

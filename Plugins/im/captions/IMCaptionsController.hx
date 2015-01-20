@@ -7,7 +7,7 @@
 package im.captions;
 
 
-class CaptionsController extends RCView implements CaptionsInterface {
+class IMCaptionsController extends RCView implements IMCaptionsInterface {
 	
 	var path :String;
 	var alignment :String;

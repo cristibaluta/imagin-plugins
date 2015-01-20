@@ -6,7 +6,7 @@
 package im.viewer;
 
 
-@:keep class ViewerPageFlow extends ViewerBase implements ViewerInterface {
+@:keep class ViewerPageFlow extends ViewerBase implements IMViewerInterface {
 	
 	var ys :Map<Int,Float>;
 	var already_scrolled :Bool;

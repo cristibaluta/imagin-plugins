@@ -4,7 +4,7 @@
 //  Created by Baluta Cristian on 2009-08-16.
 //  Copyright (c) 2012 http://ralcr.com. All rights reserved.
 //
-interface CaptionsInterface {
+interface IMCaptionsInterface {
 
 public var view :RCView;
 

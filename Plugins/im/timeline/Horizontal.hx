@@ -7,19 +7,19 @@
 package im.timeline;
 
 
-class Horizontal extends Expandable implements TimelineInterface {
+class Horizontal extends Expandable implements IMTimelineInterface {
 	
 	
 	override public function init () :Void {
 		
 		// Recalculate the width of the timeline
-		var w = ( thumbSize().width + 1 ) * files.length;// real length of the timeline
+		var w = ( thumbSize().width + 1 ) * _files.length;// real length of the timeline
 		clipsToBounds = true;
 		
 		// Add the slightly rounded background
 		var r = Math.round (IMConfig.ROUNDNESS / 2);
-		background = new RCRectangle (0, 0, w, size.height, colorBackground, 1, r);
-		this.addChild ( background );
+		_background = new RCRectangle (0, 0, w, size.height, _colorBackground, 1, r);
+		this.addChild ( _background );
 		
 		super.init();
 	}
@@ -35,14 +35,14 @@ class Horizontal extends Expandable implements TimelineInterface {
 		
 		// If the timeline is expanded, and
 		// If the mouse is not over the timeline area, try to center the current thumbnail in the visible area
-		if (!mouseOver() && expanded)
-		if (thumbsView.x + thumbs[nr].x > 2 + size.width - thumbs[nr].width ||
-			thumbsView.x + thumbs[nr].x < 2)
+		if (!mouseOver() && _expanded)
+		if (_thumbsView.x + _thumbs[_nr].x > 2 + size.width - _thumbs[_nr].width ||
+			_thumbsView.x + _thumbs[_nr].x < 2)
 		{
-			thumbsView.x = 2 - thumbs[nr].x;
+			_thumbsView.x = 2 - _thumbs[_nr].x;
 		}
 		
-		slider.x = Math.round (thumbs[nr].x + thumbs[nr].width / 2);
+		_slider.x = Math.round (_thumbs[_nr].x + _thumbs[_nr].width / 2);
 	}
 	
 	
@@ -51,7 +51,7 @@ class Horizontal extends Expandable implements TimelineInterface {
 	// Utilities
 	
 	override function thumbSize () :RCSize {
-		var len = Math.floor ( (size.width - files.length) / files.length );
+		var len = Math.floor ( (size.width - _files.length) / _files.length );
 		return new RCSize ( (len < size.height) ? size.height : len, size.height);
 	}
 	
@@ -63,6 +63,7 @@ class Horizontal extends Expandable implements TimelineInterface {
 	override function separatorSize () :RCSize {
 		return new RCSize (1, 2);
 	}
+	
 	override function separatorPosition (i:Int, s:RCSize) :RCPoint {
 		return new RCPoint ((s.width + 1) * (i + 1) - 1, 2);
 	}
@@ -76,7 +77,7 @@ class Horizontal extends Expandable implements TimelineInterface {
 		var xm  = 0;//Math.round ( Zeta.limitsInt (RCWindow.target.mouseX, xm1, xm2) );
 		
 		var x1  = Expandable.PADDING;
-		var x2  = x1 - thumbsView.width + RCWindow.sharedWindow().width - x1*2 - Expandable.PADDING*2;
+		var x2  = x1 - _thumbsView.width + RCWindow.sharedWindow().width - x1*2 - Expandable.PADDING*2;
 		
 		var x0 = Zeta.lineEquationInt (x1, x2, xm, xm1, xm2);
 		return x0;
