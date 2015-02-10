@@ -90,6 +90,13 @@ package im.viewer;
 				case "fill": photo.view.scaleToFill ( Math.round(limits.size.width), Math.round(limits.size.height) );
 			}
 			
+			var p = alignmentPhotos.split(",");
+			var scale = p[2];
+			
+			if (scale == "f" && photo.view.width > photo.view.height * 1.2) {
+				photo.view.scaleToFill (limits.size.width, limits.size.height);
+			}
+			else
 			// Align the photo in the provided limits
 			Fugu.align (photo.view, alignmentPhotos, limits.size.width, limits.size.height, photo.view.width, photo.view.height);
 		}

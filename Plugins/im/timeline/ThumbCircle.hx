@@ -13,10 +13,10 @@ class ThumbCircle extends RCControl {
 	var path :String;
 	var labelStr :String;
 	
-	var background :RCRectangle;
+	var _lineUp :RCRectangle;
+	var _lineDown :RCRectangle;
 	var circle :RCRectangle;
 	var circleActive :RCRectangle;
-	var vertical :Bool;
 	var segmentLength :Int;
 	var timer :haxe.Timer;
 	var photoView :RCImage;// Load and store it into the Photo object
@@ -39,34 +39,35 @@ class ThumbCircle extends RCControl {
 		
 		this.inited = false;
 		this.loaded = null;
-		this.vertical = w > h ? false : true;
 		this.path = path;
 		this.photo = photo;
 		this.labelStr = Std.string ( nr );
 /*		this.clipsToBounds = true;*/
 		
-		_colorLoader = IMPreferences.hexColorForKey ("color_highlighted");
+		_colorLoader = IMPreferences.hexColorForKey ("color_text");
 		_colorLink = IMPreferences.hexColorForKey ("color_highlighted");
-		_colorBackground = IMPreferences.hexColorForKey ("color_background_timeline");
+		_colorBackground = IMPreferences.hexColorForKey ("color_background");
 		
-		segmentLength = Math.ceil ((this.vertical ? w : h) / 5);
+		segmentLength = Math.ceil ((isHorizontal() ? w : h) / 5);
 		
-		var d = Math.round(8+w);
-		var r = Math.round(d/2);
+		var d = Math.round (4 + (isHorizontal() ? h : w));
+		var r = Math.round (d / 2);
 		
-		if (vertical) {
-			background = new RCRectangle (2, 0, 2, h, _colorLoader, 0.4);
-			circle = new RCRectangle (-d/2+2+1, h/2-d/2, d, d, _colorLoader, 1.0, d);
-			circle.addChild ( new RCRectangle (1, 1, d-2, d-2, 0xFFFFFF, 1.0, d-2) );
+		if (isHorizontal()) {
+			_lineUp = new RCRectangle (0, 2, w/2-d/2, 1, _colorLoader, 1);
+			_lineDown = new RCRectangle (w/2+d/2, 2, w/2-d/2, 1, _colorLoader, 1);
+			circle = new RCRectangle (w/2-d/2, -d/2+2+1, d-2, d-2, [null,_colorLoader], 0.8, d);
 		}
 		else {
-			background = new RCRectangle (0, 2, w, 2, _colorLoader, 0.4);
-			circle = new RCRectangle (0, 2, d, d, _colorLoader, 1, d);
+			_lineUp = new RCRectangle (2, 0, 1, h/2-d/2, _colorLoader, 1);
+			_lineDown = new RCRectangle (2, h/2+d/2, 1, h/2-d/2, _colorLoader, 1);
+			circle = new RCRectangle (-d/2+2+1, h/2-d/2, d-2, d-2, [null,_colorLoader], 0.8, d);
 		}
 		
-		circleActive = new RCRectangle (circle.x, circle.y, d, d, _colorLink, 0.0, d);
+		circleActive = new RCRectangle (w/2-2, h/2-2, 4, 4, _colorLoader, 0.0, 4);
 		
-		this.addChild ( background );
+		this.addChild ( _lineUp );
+		this.addChild ( _lineDown );
 		this.addChild ( circle );
 		this.addChild ( circleActive );
 	}
@@ -85,11 +86,11 @@ class ThumbCircle extends RCControl {
 	 */
 	public function updateLoaderProgress (percent:Int) :Void {
 		
-		if (percent != 0) {
-			circle.alpha = Zeta.lineEquationInt (0, 1,  percent, 0, 100);
+		if (percent < 100) {
+			circleActive.alpha = Zeta.lineEquationInt (0.0, 1.0,  percent, 0, 100);
 		}
-		if (percent == 100) {
-			circle.alpha = 1.0;
+		else {
+			circleActive.alpha = 1.0;
 /*			haxe.Timer.delay (stopLoader, 1000);*/
 		}
 		
@@ -160,12 +161,16 @@ class ThumbCircle extends RCControl {
 		return h;
 	}*/
 	
+	inline function isHorizontal () :Bool {
+		return size.width > size.height;
+	}
 	
 	// Clean mess
 	override public function destroy () : Void {
 		
-		Fugu.safeDestroy ( [background, circle, circleActive] );
-		background = null;
+		Fugu.safeDestroy ( [_lineUp, _lineDown, circle, circleActive] );
+		_lineUp = null;
+		_lineDown = null;
 		circle = null;
 		circleActive = null;
 		

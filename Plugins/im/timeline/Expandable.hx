@@ -98,7 +98,7 @@ class Expandable extends RCView implements IMTimelineInterface {
 			
 			var p = thumbPosition (i, ts);
 			var thumb = new Thumb (p.x, p.y, ts.width, ts.height, _path, _files[i], i+1);
-				thumb.onClick = clickThumbHandler.bind (i);
+				thumb.onClick = clickThumbHandler.bind ( i );
 			_thumbs.push ( thumb );
 			_thumbsView.addChild ( thumb );
 			
